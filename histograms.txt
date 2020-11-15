@@ -1,0 +1,9 @@
+../../allEclipseProjects/categories/src/utility/Histogram.java
+../../allEclipseProjects/poker/src/com/tayek/utilities/Histogram.java
+../../allEclipseProjects/_utilities/src/com/tayek/util/Histogram.java
+../../conradapps/histogramconrad/src/histogram/Histogram.java
+../../conradapps/rabbit/src/main/java/com/tayek/utilities/Histogram.java
+../../conradapps/sudoku2/src/main/java/p/Histogram.java
+../../conradapps/tabletcore/src/com/tayek/utilities/Histogram.java
+../../strangeEclipseProjects/r1/src/utilities/Histogram.java
+../../strangeEclipseProjects/r2/src/utilities/Histogram.java
