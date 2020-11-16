@@ -1,20 +1,10 @@
 package com.tayek.util;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 //should be called stats and should have two implementatons
 //one like this that uses buckets and one that keeps an accurate frequency distribution.
 //maybe use http://jakarta.apache.org/commons/math/userguide/stat.html instead
 public class Histogram {
-    public static @SuppressWarnings("serial") class LruMap<K,V>
-            extends LinkedHashMap<K,V> {
-        public LruMap(int max) { super(max+1); this.max=max; }
-        @Override public boolean removeEldestEntry(Map.Entry<K,V> eldest) {
-            return size()>max;
-        }
-        final int max;
-    }
     public Histogram() { this(10,0,1); }
     public Histogram(int bins,double low,double high) {
         // low>high should throw
@@ -51,7 +41,7 @@ public class Histogram {
         if(x>=high) { // this test seem right, but sort sucks since you need an
                       // extra bin for high
                       // fix by giving high a value like 6.0001
-            if(false) System.out.println("high "+x+">="+high+" *******");
+                      //if(false) System.out.println("high "+x+">="+high+" *******");
             overflows++;
         } else if(x<low) underflows++;
         else {

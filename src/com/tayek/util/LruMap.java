@@ -1,7 +1,11 @@
 package com.tayek.util;
 import java.util.*;
 public class LruMap<K,V> extends LinkedHashMap<K,V> {
-	public LruMap() {
+	/**
+     * 
+     */
+    private static final long serialVersionUID=1L;
+    public LruMap() {
 		super(defaultMaxSize+1,.75f,true);
 		maxSize=defaultMaxSize;
 	}
@@ -22,7 +26,7 @@ public class LruMap<K,V> extends LinkedHashMap<K,V> {
 		super(arg0);
 		throw new RuntimeException("you did not construct an lru map!");
 	}
-	public boolean removeEldestEntry(Map.Entry eldest) {
+	public boolean removeEldestEntry(Map.Entry<K,V> eldest) {
 		return size()>maxSize;
 	}
 	public static void main(String[] args) {}

@@ -38,8 +38,8 @@ public class Utils {
 		}
 		return stringBuffer.toString();
 	}
-	public static List getAsListOfStrings(URL url) { // get url as list of strings
-		List list=null;
+	public static List<String> getAsListOfStrings(URL url) { // get url as list of strings
+		List<String> list=null;
 		BufferedReader bufferedReader=null;
 		InputStream inputStream=null;
 		try {
@@ -63,7 +63,7 @@ public class Utils {
 					e.printStackTrace();
 				}
 		}
-		return Collections.EMPTY_LIST;
+		return Collections.emptyList();
 	}
 	public static String get(URL url) {
 		String string=null;

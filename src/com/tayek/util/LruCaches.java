@@ -19,7 +19,7 @@ public class LruCaches<K,V> {
 		if(lruCache==null) throw new RuntimeException(this.getClass().getName()+" does not contain a value for name: "+name);
 		return lruCache.put(key,value);
 	}
-	public static LruCaches instance() {
+	@SuppressWarnings("rawtypes") public static LruCaches instance() {
 		return lruCaches;
 	}
 	private LruCaches() { // singleton
@@ -29,6 +29,6 @@ public class LruCaches<K,V> {
 	}
 	public static void main(String[] args) {}
 	final Map<String,LruCache<K,V>> cacheNameToLruCache=new HashMap<String,LruCache<K,V>>();
-	private static LruCaches lruCaches=new LruCaches();
+	@SuppressWarnings("rawtypes") private static LruCaches lruCaches=new LruCaches();
 	static final long SerialVersionUID=0;
 }

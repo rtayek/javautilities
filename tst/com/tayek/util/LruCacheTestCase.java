@@ -25,8 +25,8 @@ public class LruCacheTestCase extends TestCase {
 		super.tearDown();
 	}
 	public void testSanity() {
-		final Integer value=new Integer(2);
-		final Integer key=new Integer(1);
+		final Integer value=Integer.valueOf(2);
+		final Integer key=Integer.valueOf(1);
 		final Object o=cache.get(key);
 		assertNull(o);
 		final Object o2=cache.put(key,value);
@@ -40,10 +40,10 @@ public class LruCacheTestCase extends TestCase {
 		final int n=20;
 		cache=new LruCache<Integer,Integer>(size);
 		for(int i=0;i<n;i++)
-			cache.put(new Integer(i),new Integer(i));
+			cache.put(Integer.valueOf(i),Integer.valueOf(i));
 		logger.fine("before: "+cache);
 		for(int i=n-1;i>=0;i--)
-			assertEquals(i<size?null:new Integer(i),cache.get(new Integer(i)));
+			assertEquals(i<size?null:Integer.valueOf(i),cache.get(Integer.valueOf(i)));
 		logger.fine("after: "+cache);
 	}
 	void w(final int time) {
@@ -64,19 +64,19 @@ public class LruCacheTestCase extends TestCase {
 	}
 	void inOrder(final int n) {
 		for(int i=0;i<n;i++) {
-			final Integer key=new Integer(i);
+			final Integer key=Integer.valueOf(i);
 			use(key);
 		}
 	}
 	void reverseOrder(int n) {
 		for(int i=n-1;i>=0;i--) {
-			final Integer key=new Integer(i);
+			final Integer key=Integer.valueOf(i);
 			use(key);
 		}
 	}
 	void randomOrder(final int unique,final int howMany) {
 		for(int i=0;i<howMany;i++) {
-			final Integer key=new Integer(r.nextInt(unique));
+			final Integer key=Integer.valueOf(r.nextInt(unique));
 			use(key);
 		}
 	}
@@ -185,13 +185,13 @@ public class LruCacheTestCase extends TestCase {
 		final int n=100000;
 		final Time t=new Time();
 		for(int i=0;i<n;i++)
-			m.put(new Integer(i),new Integer(5*i%3));
+			m.put(Integer.valueOf(i),Integer.valueOf(5*i%3));
 		final long dt=t.dt();
 		logger.info(n+" items/"+dt+" ms. = "+(float)(n*1000./dt)+" items/second.");
 		final Time t2=new Time();
 		final int n2=10*n;
 		for(int i=0;i<n2;i++)
-			m.get(new Integer(i%(2*n)));
+			m.get(Integer.valueOf(i%(2*n)));
 		final long dt2=t2.dt();
 		logger.info(n2+" items/"+dt2+" ms. = "+(float)(n2*1000./dt2)+" items/second.");
 	}
@@ -200,13 +200,13 @@ public class LruCacheTestCase extends TestCase {
 		final LruCache<Integer,Integer> m=new LruCache<Integer,Integer>(n);
 		final Time t=new Time();
 		for(int i=0;i<n;i++)
-			m.put(new Integer(i),new Integer(5*i%3));
+			m.put(Integer.valueOf(i),Integer.valueOf(5*i%3));
 		final long dt=t.dt();
 		logger.info(n+" items/"+dt+" ms. = "+(float)(n*1000./dt)+" items/second.");
 		final Time t2=new Time();
 		final int n2=10*n;
 		for(int i=0;i<n2;i++)
-			if(m.get(new Integer(i%(2*n)))==null) m.put(new Integer(i%(2*n)),new Integer(i%(2*n)));
+			if(m.get(Integer.valueOf(i%(2*n)))==null) m.put(Integer.valueOf(i%(2*n)),Integer.valueOf(i%(2*n)));
 		final long dt2=t2.dt();
 		logger.info(n2+" items/"+dt2+" ms. = "+(float)(n2*1000./dt2)+" items/second.");
 	}

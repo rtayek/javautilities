@@ -14,7 +14,12 @@ public class LruCache<K,V> {
 		this.max=max;
 		this.nullIsAllowed=nullIsAllowed;
 		cache=new LinkedHashMap<K,V>(max+1,.75F,true) { // lruCache = (Map)Collections.synchronizedMap(lruCache);
-			public boolean removeEldestEntry(Map.Entry eldest) {
+			/**
+             * 
+             */
+            private static final long serialVersionUID=1L;
+
+            public boolean removeEldestEntry(Map.Entry<K,V> eldest) {
 				return size()>max;
 			}
 		};

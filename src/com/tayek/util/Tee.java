@@ -15,14 +15,14 @@ public class Tee extends FilterOutputStream /* make this into a writer or make a
 		stream.addElement(out);
 	}
 	public synchronized void write(int b) throws IOException {
-		for(Enumeration e=stream.elements();e.hasMoreElements();) {
+		for(Enumeration<OutputStream> e=stream.elements();e.hasMoreElements();) {
 			OutputStream out=(OutputStream)e.nextElement();
 			out.write(b);
 			out.flush();
 		}
 	}
 	public synchronized void write(byte[] data,int offset,int length) throws IOException {
-		for(Enumeration e=stream.elements();e.hasMoreElements();) {
+		for(Enumeration<OutputStream> e=stream.elements();e.hasMoreElements();) {
 			OutputStream out=(OutputStream)e.nextElement();
 			out.write(data,offset,length);
 			out.flush();

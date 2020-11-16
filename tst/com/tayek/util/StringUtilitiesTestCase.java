@@ -17,10 +17,10 @@ public class StringUtilitiesTestCase extends TestCase {
 		assertNull(StringUtilities.toString(new String[0]));
 	}
 	public void testToStringOfArrayOfStringWithNullIterator() {
-		assertNull(StringUtilities.toString((Iterator)null));
+		assertNull(StringUtilities.toString((Iterator<String>)null));
 	}
 	public void testToStringOfArrayOfStringWithEmptyIterator() {
-		assertNull(StringUtilities.toString(Collections.EMPTY_LIST.iterator()));
+		assertNull(StringUtilities.toString(Collections.emptyListIterator()));
 	}
 	public void testToStringOfReaderWithNull() throws Exception {
 		assertNull(StringUtilities.toString((Reader)null));

@@ -94,7 +94,7 @@ public class HistogramWithMedian {
 		for(int i=0;i<bins;i++)
 			sb.append(i>0?",":"").append(bin(i));
 		sb.append("],").append(bin(bins));
-		if(false) System.out.println(sum3+" "+sum4); // shut up lint
+		System.out.println(sum3+" "+sum4); // shut up lint
 		return sb.toString();
 	}
 	public double median() {

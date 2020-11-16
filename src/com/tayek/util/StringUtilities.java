@@ -20,13 +20,13 @@ public class StringUtilities {
 	public static String toString(final String[] s) {
 		return s!=null?toString(Arrays.asList(s).iterator(),null,false):null;
 	}
-	public static String toString(final Iterator i) {
+	public static String toString(final Iterator<String> i) {
 		return toString(i,null,false);
 	}
 	public static String toString(final String[] string,final String separator,final boolean addSeparatorAtEnd) {
 		return toString(Arrays.asList(string).iterator(),separator,addSeparatorAtEnd);
 	}
-	public static String toString(final Iterator i,final String separator,final boolean addSeparatorAtEnd) {
+	public static String toString(final Iterator<String> i,final String separator,final boolean addSeparatorAtEnd) {
 		String s=null;
 		if(i!=null&&i.hasNext()) {
 			final StringBuffer sb=new StringBuffer();
@@ -59,8 +59,8 @@ public class StringUtilities {
 		}
 		return l;
 	}
-	public static List toStrings(final File file) throws FileNotFoundException,IOException {
-		return file!=null?toStrings(new BufferedReader(new FileReader(file))):Collections.EMPTY_LIST;
+	public static List<String> toStrings(final File file) throws FileNotFoundException,IOException {
+		return file!=null?toStrings(new BufferedReader(new FileReader(file))):Collections.emptyList();
 	}
 	public static Reader toReader(final String s) {
 		return s!=null?new StringReader(s):null;
@@ -138,13 +138,13 @@ public class StringUtilities {
 		}
 		return sb.toString();
 	}
-	public static String quote(final String string,final Map map) {
+	public static String quote(final String string,final Map<Character,String> map) {
 		StringBuffer sb=new StringBuffer();
 		char c;
 		String s;
 		for(int i=0;i<string.length();i++) {
-			Character ch=new Character(c=string.charAt(i));
-			if((s=(String)map.get(ch))!=null)
+			Character ch=Character.valueOf(c=string.charAt(i));
+			if((s=map.get(ch))!=null)
 				sb.append(s);
 			else
 				sb.append(c);
@@ -156,9 +156,9 @@ public class StringUtilities {
 	}
 	static final Map<Character,String> xmlQuoteMap=new HashMap<Character,String>();
 	static {
-		xmlQuoteMap.put(new Character('&'),"&amp;");
-		xmlQuoteMap.put(new Character('<'),"&lt;");
-		xmlQuoteMap.put(new Character('>'),"&gt;");
+		xmlQuoteMap.put(Character.valueOf('&'),"&amp;");
+		xmlQuoteMap.put(Character.valueOf('<'),"&lt;");
+		xmlQuoteMap.put(Character.valueOf('>'),"&gt;");
 	}
 	public static final String[] emptyStringArray=new String[0];
 }
